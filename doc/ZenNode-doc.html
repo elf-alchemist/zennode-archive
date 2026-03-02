@@ -1,0 +1,261 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Marc Rousseau">
+   <meta name="KeyWords" content="ZenNode DOOM Heretic Hexen WAD BSP">
+   <title>ZenNode Home Page</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+
+<center>
+<h1><font size=+3>ZenNode - Possibly the fastest DOOM</font><sub><font size=-2>(tm)</font></sub><font size=+3> BSP builder yet.</font></h1>
+<p><br>Version 1.0 by <a href="mailto:rousseaum@pictel.com">Marc Rousseau</a>
+</center>
+
+<p><br>
+<table BORDER=0 CELLSPACING=5 CELLPADDING=3 COLS=1 WIDTH="100%" BGCOLOR="#808000" >
+<tr BGCOLOR="#000000">
+<td><b><font face="Arial,Helvetica"><font color="#FFFFFF">BACKGROUND</font></font></b></td>
+</tr>
+
+<tr BGCOLOR="#E0E0E0">
+<td>
+<blockquote>&nbsp;
+<br>After playing around with a few level editors for DOOM, I noticed that
+most of them took a long time to build the NODES structure. Even worse,
+some of them built NODES that didn't work! So, I decided I'd try writing
+a NODES builder that 1) built valid NODES and 2) built them FAST. Well,
+after a month or two of fooling around, ZenNode is here. I believe both
+objectives have been reached. I've compared it to several other NODES builders
+out there and it blows them all away! It's written entirely in C/C++. It
+could probably be sped up with a little assembly code (or a better optimizing
+compiler).</blockquote>
+
+<blockquote>The .zip file contains a fully functional BLOCKMAP, NODES,
+and REJECT builder for DOOM .WAD files. ZenNode will rebuild either a single
+level or all the levels in a .WAD file. This version will accept either
+DOOM, DOOM II, Heretic, and/or HEXEN .WADs. Try it out. Let me know what
+you think.</blockquote>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><font face="Arial,Helvetica"><font color="#FFFFFF">DESCRIPTION</font></font></b></td>
+</tr>
+
+<tr BGCOLOR="#E0E0E0">
+<td>
+<blockquote>&nbsp;
+<br>ZenNode will read the level description from a .WAD file and create
+either a new BLOCKMAP resource, REJECT resource, and/or NODES/SEGS/SSECTOR
+resources. Levels in a .WAD may be specified on the command line, or, if
+none are specified, all of the maps in a .WAD will be rebuilt.</blockquote>
+
+<blockquote>As it completes a resource, ZenNode will print information
+indicating the results. When a BLOCKMAP is completed, it will display the
+new/old size of the block map and a percentage of the block map that is
+actually used by the map. After it rebuilds the BSP tree, it will display
+the number of new/old NODES and SEGS that it created along with the original
+numbers.&nbsp; For the REJECT resource, it displays the new and old efficiencies
+(higher numbers mean less work for the game engine at run time).</blockquote>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><font face="Arial,Helvetica"><font color="#FFFFFF">NEW FEATURES</font></font></b></td>
+</tr>
+
+<tr BGCOLOR="#E0E0E0">
+<td><i>Version 1.0:</i>
+<blockquote>All of the source code is now included.
+<p>The code to build the REJECT structure has been modified and cleaned up and 
+should run ~36% faster than before.
+<p>Added support for Linux.</blockquote>
+<i>Version 0.99:</i>
+<blockquote>The memory requirements for ZenNode have been reduced. In some
+cases, ZenNode now requires significantly less memory (up to 3M less!)
+to rebuild the BSP tree. A minor change was made to the REJECT algorithm
+to handle maps that are large (i.e.: maps that cover a large area).</blockquote>
+<i>Version 0.98:</i>
+<blockquote>ZenNode will now build a REJECT resource! Given a valid .wad
+file, ZenNode will conduct a complete set of line-of-sight (LOS) calculations
+for every sector in the map. There are several methods currently in use
+to create a REJECT resource: distance, # of intervening sectors, sampling,
+and 'perfect' testing. The first two base the results solely on distances
+without regards to solid walls and LOS but are relatively fast.  The third
+tests several points along two linedefs and bases it's decision on the
+results. This results in a more accurate resource than the first two methods,
+but may miss a valid LOS if the test points aren't chosen correctly or
+too few are used. However, the more points that are used, the slower this method
+runs (it slows down exponentially as the number of test points increases).
+The fourth is the most accurate (and the one used in ZenNode). It attempts
+to look at all of the intervening solid lines and find a LOS if one exists.  This
+exhaustive test can be slow at times, but as usual, things may speed up
+in the future... ;)</blockquote>
+<i>Version 0.97a:</i>
+<blockquote>IMPORTANT BUG FIX: ZenNode now handles the case where a fully
+qualified pathname to the input .WAD is specified on the command line for
+a .WAD file in the current directory. Previous versions would not handle
+this case properly and would create invalid .WAD files.</blockquote>
+<i>Version 0.97:</i>
+<blockquote>You can now extract the maps to a new PWAD file. From the command
+line, use the -x switch to indicate that the specified levels are to be
+extracted to a separate PWAD file. This feature can be used to extract
+any map(s) without modifying them by turning off all the other options
+(i.e.: -b- -n-).
+<p>The default settings for the -n2 option have been changed. The new values
+are: y1=1, y2=7, y3=0, y4=1.
+<p>You can now set all your favorite command line settings in a configuration
+file. When ZenNode starts, it looks for a file called ZenNode.cfg. It will
+look in the current directory, then in the directory where the ZenNode.exe
+file is located. If one is found, it's contents override the normal default
+values. Then, actual command line parameters are checked.
+<p>Improved support for special effects. By using a customization file,
+you can now add virtually any special effect to a .wad file. See custom.doc
+for a more detailed description of how to use the customization file. A
+sample .wad file has been included showing a variety of special effects
+and a custom file demonstrating how to get all the effects in the .wad
+to work. For more information regarding this .wad file and a description
+of how to create all the effects (and more) check out:
+<blockquote>spcial12.zip by Jens Hykkelbjerg it can be found at:
+<p><a href="ftp://ftp.luth.se/pub/games/doom/docs/editing/spcial12.zip">ftp://ftp.luth.se/pub/games/doom/docs/editing/spcial12.zip</a>
+<br><a href="ftp://ftp.cdrom.com/pub/doom/docs/editing/spcial12.zip">ftp://ftp.cdrom.com/pub/doom/docs/editing/spcial12.zip</a></blockquote>
+</blockquote>
+<i>Version 0.96:</i>
+<blockquote>Support for 'special effects' has been improved. Using the
+-nu switch, you can affect the creation of sub-sectors. What this means
+(for those of you who don't know/care what a sub-sector is) is that you
+can get most of the special effects to work in your .WAD file. By default
+all sub-sectors are unique. This works with most special effects (i.e.:
+deep-water, invisible stairs, ...). If the effect you're trying to achieve
+doesn't work, try turning off this feature with -nu-. This works for other
+effects, such as light striking a wall from no visible source (different
+sector).
+<p>For those of you who think ZenNode is too slow &lt;g>, there's a new
+method for partitioning available for you! Both of the existing algorithms
+examine every valid segment to see if they should be used as the partition
+for a node. Examining every segment can slow things down, so if you really
+can't wait, if ZenNode is way too slow for you, try the new algorithm.
+It only looks at a small sub-set of segments instead (saving you valuable
+seconds that could be used testing your new .WAD).
+<p>You can now 'customize' ZenNode's partitioning logic! The formula used
+to determine the merit of a particular SEG is now user adjustable. You
+can now set the four coefficients used in the calculation. If you don't
+like the way ZenNode picks lines, or you just want to experiment, now you
+can actually do something about it. The metric formula used is:
+<blockquote>
+<pre>metric = ( L * R ) / ( x1 * S / x2 ) - ( x3 * S + x4 ) * S;</pre>
+</blockquote>
+Where L, R, and S represent the # of SEGS to the left, right, and split
+by the candidate SEG. Checks are made to avoid division by zero. The programmable
+values x1, x2, x3, and x4 can be modified by setting the environment variables
+ZEN_X1, ZEN_X2, ZEN_X3, and ZEN_X4 respectively. The default settings are:
+<blockquote>
+<pre>x1=24, x2=5, x3=1, x4=25. (Older versions of ZenNode used the values x1=4 or 5, x2=1, x3=0, x4=0).</pre>
+</blockquote>
+Algorithm 2 also uses a similar set of variables, ZEN_Y1, ZEN_Y2, ZEN_Y3,
+and ZEN_Y4, where L, R, and S represent sectors rather than SEGS. The default
+settings are: y1=0, y2=1, y3=1, y4=5. Have fun.</blockquote>
+<i>Version 0.95:</i>
+<blockquote>Support for Hexen has been added. This has been largely untested,
+but a quick test of the hexen.wad file seems to be working. So, as soon
+as you get your favorite WAD Editor to support Hexen, ZenNode will be ready!
+<p>ZenNode now offers two methods of partitioning your level. The new method
+makes an attempt to minimize the average depth of the BSP tree. This should
+make it slightly faster for the DOOM engine to render a screen, since it
+has to traverse fewer NODES each time. The original method is still intact
+and attempts to minimize the number of splits made. Currently the new method
+has not been optimized for speed but it is still reasonably fast.
+<p>BSPInfo has been included to allow you to gather information about how
+your node builders compare to each other. You can see if one favors certain
+characteristics over others, or just get an overall feel for their performance.</blockquote>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><font face="Arial,Helvetica"><font color="#FFFFFF">REQUIREMENTS</font></font></b></td>
+</tr>
+
+<tr BGCOLOR="#E0E0E0">
+<td>
+<ol>
+<li>
+A machine capable of running DOOM - 386 or better with a few Megs of RAM</li>
+
+<li>
+A supported operating:</li>
+
+<ol TYPE="a">
+<li>
+OS/2 v3.0 or higher</li>
+
+<li>
+DOS (v?.?? or higher - tested with 5.0 &amp; 6.22)</li>
+
+<li>
+a Win32 platform (Windows NT or Windows 9x)</li>
+
+<li>
+a 16-bit Windows platform (Windows 3.x or Windows for Workroups)</li>
+
+<li>
+Linux (tested on Red Hat 5.0 and higher)</li>
+</ol>
+
+<li>
+A .WAD file</li>
+</ol>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><font face="Arial,Helvetica"><font color="#FFFFFF">ACKNOWLEDGMENTS</font></font></b></td>
+</tr>
+
+<tr BGCOLOR="#E0E0E0">
+<td>
+<dir>DOOM &amp; DOOM II are trademarks of id Software, inc.,(C)1994.
+<br>Heretic &amp; HEXEN were developed by Raven Software for id Software.</dir>
+
+<ul>
+<li>
+Thanks to the guys at id Software for creating DOOM.</li>
+
+<li>
+Thanks to Raven Software for putting out Heretic &amp; Hexen.</li>
+
+<li>
+Matt Fell and everyone who helped put together the unofficial DOOM specs.
+This program was written entirely from the descriptions in this file and
+wouldn't have been possible without it.</li>
+
+<li>
+Jens Hykkelbjerg for permission to include spcial2b.wad and for creating
+RMB - the only other REJECT builder I'm aware of that can generate a 'perfect'
+REJECT resource.</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><font face="Arial,Helvetica"><font color="#FFFFFF">DISCLAIMER</font></font></b></td>
+</tr>
+
+<tr BGCOLOR="#E0E0E0">
+<td>
+<blockquote>&nbsp;
+<br>I've tested the .WADs generated by ZenNode and haven't found any fatal
+errors or HOM (Hall-of-mirrors) side effects from any level I've tested.
+However, by using this program you assume all responsibility for lost/damaged
+files resulting from the use of a .WAD generated by ZenNode. If you find
+a level that causes either an error in ZenNode, HOMs, or any other problem
+inside DOOM, DOOM II, Heretic, or Hexen please let me know. (Please indicate
+which ZenNode version you are using and what OS &amp; version - i.e.: v0.97
+running on OS/2 v3.0).</blockquote>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

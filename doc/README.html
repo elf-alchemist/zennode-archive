@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<BODY>
+
+<FONT FACE="Courier New" SIZE=2>
+<P></P>
+<P>A few notes on this version of ZenNode:</P>
+<P></P>
+<OL>
+
+<LI>The REJECT algorithm may ignore some 'obstacles' (i.e.: pillars in a sector).  This means that a sector pair may be reported as visible, when the actual LOS is blocked by an obstacle.  This does not adversely affect the game (it's similar to a 'default' reject of all zeros), but does decrease the reject efficiency slightly (usually by less than 0.01%).</LI>
+<P></P>
+<LI>I still haven't completely verified that this version works properly with PolyObjects (the moving sectors in HEXEN).</LI>
+<P></P>
+<LI>This program does NOT check to see if you have a valid .WAD file to begin with.  If you don't, ZenNode will dutifully build it's data structures for the .WAD file, but DOOM may behave unpredictably.</LI>
+<P></P>
+<LI>If you don't specify an output filename, the results will be written to a .WAD with the orignal filename in the current directory.  If the .WAD you specified as the source is in the current directory, YOUR ORIGINAL .WAD WILL BE OVERWRITTEN.&#9;&#9;&#9;&#9;      </LI>
+<P></P>
+<LI>If the ZenNode detects that the new resources (NODES, SEGS, BLOCKMAP, etc.) are the same as those in the original file, the file is not rewritten.  That is, if you run the program twice on the same .WAD file, the second time, after generating the resources, it will not update the file.  (No big deal, just thought you might like to know.)</LI>
+<P></P>
+<LI>Since ZenNode only builds resources (i.e.: NODES and related structures), it WILL rebuild levels E1M1 - E1M9.  By id Software's request, you are asked not to distribute custom levels below E2M1 for DOOM/Heretic.</LI>
+<P></P>
+<LI>At any time while building a .WAD, file pressing &lt;ESC&gt; will stop ZenNode from rebuilding any further levels in the .WAD file.  However, it will continue rebuilding the level it is currently on.  Any levels that have been rebuilt will be written to the .WAD file before exiting.</LI>
+<P></P>
+<LI>ZenNode stores any new data for a level in memory until the .WAD file is rewritten.  This means that if you rebuild a large .WAD file with lots of levels (id's IWADs for example), ZenNode may need a lot of memory.  If you run into memory problems (usually indicated by an 'Abnormal program termination' message), use the level selection option and do a few at a time. For example:</LI></OL>
+<P></P>
+<DIR>
+  <DIR>
+    <P>C:\&gt;ZenNode DOOM2 map01+map02+map03+map+04+map05</P>
+    <P>C:\&gt;ZenNode DOOM2 map06+map07+map08+map+09+map10</P>
+    <P>...</P>
+  </DIR>
+</DIR>
+
+</OL>
+</FONT>
+
+</BODY>
+
+</HTML>

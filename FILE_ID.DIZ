@@ -1,0 +1,8 @@
+ZenNode 1.00: An extremely fast BSP 
+  & REJECT builder for Linux, DOS, and
+  Win32. Merges multiple WADs into a 
+  single WAD file.  Rebuilds NODES,
+  REJECT, and/or BLOCKMAP for any or 
+  all levels in a WAD file.  Supports 
+  DOOM, DOOM II, Heretic, and HEXEN.
+  New special effects support.

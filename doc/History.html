@@ -1,0 +1,252 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Marc Rousseau">
+   <meta name="KeyWords" content="ZenNode Changes Revision History">
+   <title>ZenNode: Revision History</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+
+<center>
+<h1><font size=+3>Revision History</font></h1>
+</center>
+
+<font size=-1>
+
+<table BORDER=0 CELLSPACING=5 CELLPADDING=3 COLS=1 WIDTH="100%" BGCOLOR="#E0E0E0" >
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 1.0</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Added support for Linux</li>
+<li>Cleaned up REJECT builder code and inlined a few routines.</li>
+<li>Added code to REJECT builder to use sector hierarchy to speed up build time.</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">*Version 0.99</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Added simple level sanity check before processing any level.</li>
+<li>Reduced run-time memory requirements for BSP Algorithms.</li>
+<li>Changed logic in REJECT algorithm to handle larger levels.</li>
+<li>Fixed logic for checking map level names.</li>
+<li>Fixed bug in BSP code to detect 'almost' parallel lines.</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">*Version 0.98b</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Fixed bug in REJECT algorithm.</li>
+</ul>
+</td>
+</tr>
+
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 0.98a</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Fix run-time error building NODES.</li>
+<li>Improved REJECT algorithm.</li>
+<li>Win32: Restore cursor after Ctrl-C, Ctrl-Break, or GP-Fault.</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 0.98</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Added REJECT builder.</li>
+<li>Changed command-line default to create a real REJECT.</li>
+<li>Improved method used to determine the PWAD type.</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 0.97a</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Fix - related to saving .WADs given a full pathname.</li>
+<li>Fix - related to [unique-sectors] option in .zen files.</li>
+<li>Fix - related /n2 switch on large levels.</li>
+<li>Improved error detection for .WAD file operations.</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 0.97</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Added /x switch to extract rebuilt levels to a PWAD</li>
+<li>Added configuration file for default command-line switches</li>
+<li>Added customization file indicating:</li>
+<ul>
+<li>- linedefs that should be ignored</li>
+<li>- sectors/linedefs that should not be split</li>
+<li>- sectors that should/should not be unique in a SSECTOR</li>
+</ul>
+<li>Improved BLOCKMAP compression routines</li>
+<li>Fixed bugs in the minimize depth algorithm</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 0.96</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Changed command line option syntax.</li>
+<li>Added user customization of the partition formula</li>
+<li>Added BLOCKMAP compression</li>
+<li>Added minimal support for the REJECT structure</li>
+<li>Added /nu switch for controlling unique sub-sector creation</li>
+<li>Added a new algorithm for more speed</li>
+<li>Modified the original algorithm - fewer splits / a little slower :(</li>
+<ul>
+<li>uses fewer diagonal partitions</li>
+<li>slightly slower than before :( - but just a little - :)</li>
+</ul>
+<li>Modified the algorithm for minimizing BSP tree depth - lower depth</li>
+<li>Fixed bugs in the BLOCKMAP routines</li>
+<li>Added balance information to BSPInfo</li>
+</ul>
+</td>
+</tr>
+
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 0.95</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Added support for HEXEN WADs</li>
+<li>Added /d switch for minimizing BSP tree depth</li>
+<li>Added /i switch to ignore non important linedefs</li>
+<li>Improved error messages for invalid/open WADs</li>
+<li>Fixed bug related to WADs w/o existing NODES/SEGS</li>
+<li>A few more minor speed-ups</li>
+<li>Included BSPInfo</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 0.94</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Added BLOCKMAP creation</li>
+<li>Added new command line options:</li>
+<ul>
+<li>select multiple levels for each WAD</li>
+<li>merge multiple WADs into one</li>
+<li>specify output filename</li>
+<li>handle multiple seperate WADs</li>
+</ul>
+<li>Replaced ZenNT with a 32-bit DPMI/Win32 Console version</li>
+<li>Placed each platform version in its own sub-directory in .ZIP</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 0.93</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Added ZenNT - Win32 Console version</li>
+<li>A few more minor speed-ups</li>
+<li>Fixed minor bugs</li>
+<li>Added /q switch</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 0.92</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Added new routines to speed up the NODES build process.</li>
+<li>Added /t switch</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 0.91</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>Replaced Borland C++'s malloc/free to avoid a bug that causes a GP Fault at run-time on large levels.</li>
+<li>Added 'Heretic'(tm) to the help screen.</li>
+</ul>
+</td>
+</tr>
+
+<tr BGCOLOR="#000000">
+<td><b><i><font face="Arial,Helvetica"><font color="#FFFFFF">Version 0.90</font></font></i></b></td>
+</tr>
+
+<tr>
+<td>
+<ul>
+<li>First public release. Rebuilds NODES found in a single .WAD file specified on the command line.</li>
+</ul>
+</td>
+</tr>
+
+
+</table>
+
+*Not publicly released
+
+</font>
+
+</body>
+</html>

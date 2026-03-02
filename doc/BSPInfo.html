@@ -1,0 +1,66 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (WinNT; U) [Netscape]">
+</head>
+<body>
+
+<center>
+<h1>
+<font face="Courier New"><font size=-1>BSPInfo Version 1.02 by Marc Rousseau</font></font></h1></center>
+
+<p>&nbsp;
+<br>&nbsp;
+<br>
+<p><font face="Verdana"><font size=-1>During the development of ZenNode,
+I often wondered what was going on with the BSP structures that were being
+built. Was this algorithm doing better than that one? How balanced is the
+tree? How deep is it going? ... BSPInfo grew out of the tool used to see
+what was going on. It reports statistics to describe the BSP tree. It can
+be used to give you a feel of how particular Node builders are performing.</font></font><font face="Verdana"></font>
+<p><font face="Verdana"><font size=-1>The following is a brief description
+of each of the values displayed by BSPInfo.</font></font>
+<br><font face="Verdana"></font>&nbsp;<font face="Verdana"></font>
+<p><font face="Verdana"><font size=-1><b>Depth: </b>The maximum depth of
+the BSP tree. The deeper the tree, the more work DOOM has to do to update
+the display. A smaller value means that, on average, DOOM will have fewer
+NODES to traverse when updating the screen.</font></font><font face="Verdana"></font>
+<p><font face="Verdana"><font size=-1><b>FOM: </b>(Figure of Merit) This
+is an attempt to measure the 'balance' of the tree. Each node with both
+a right and left child or no children is considered balanced. The FOM value
+is a ratio of balanced nodes to the overall number of nodes.An FOM of 1.000
+indicates perfect binary tree. This will *VERY RARELY* occur, since it
+requires a number of nodes that is a power of 2 and every node being balanced.</font></font><font face="Verdana"></font>
+<p><font face="Verdana"><font size=-1><b>Balance: </b>Indicates the percentage
+of nodes to the left and right of the root node. Generally, a more balanced
+tree is preferable to a less balanced tree, since, the average depth for
+any node is likely to be smaller. (This actually is an indication of how
+well the node builder chose it's first partition.)</font></font><font face="Verdana"></font>
+<p><font face="Verdana"><font size=-1><b>Splits: </b>How many times the
+Node builder had to split segments to fit everything into the tree. There
+are no hard rules saying that splits are bad, however fewer is generally
+better.</font></font><font face="Verdana"></font>
+<p><font face="Verdana"><font size=-1><b>Diagonals: </b>The number of BSP
+partition lines chosen that were diagonal. The DOOM rendering engine runs
+much faster when the partition lines are either vertical or horizontal.
+Generally the fewer diagonals the better.</font></font><font face="Verdana"></font>
+<p><b><font face="Verdana"><font size=-1>Nodes: </font></font></b><font face="Verdana"><font size=-1>Number
+of NODES in the map.</font></font><font face="Verdana"></font>
+<p><font face="Verdana"><font size=-1><b>Segs: </b>Number of SEGS in the
+map.</font></font>
+<br><font face="Verdana"></font>&nbsp;<font face="Verdana"></font>
+<p><b><font face="Verdana"><font size=-1>IMPORTANT:</font></font></b>
+<br><font face="Verdana"><font size=-1>None of these figures are meant
+to imply that one Node builder is better (or worse) than another.&nbsp;
+They are simply designed to describe the type of BSP trees being built.&nbsp;
+Some favor shallow tree depths, others attempt to reduce splits, others
+favor reducing diagonals.&nbsp; No one value should be viewed as more important
+than the others.&nbsp; In general, if a Node builder builds a BSP tree
+with all values significantly lower, except FOM, than other Node builders,
+it most likely means that that level will play slightly faster in DOOM
+but is no more or less 'correct' than any other Node builder.&nbsp; Of
+course these numbers aren't important.&nbsp; The only thing that is important
+is that the BSP tree created works correctly under DOOM.</font></font>
+</body>
+</html>
